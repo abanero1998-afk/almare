@@ -56,25 +56,25 @@
 @media(max-width:1000px){.novita-grid{grid-template-columns:repeat(2,1fr)}.look-grid{grid-template-columns:1fr}.look-card{aspect-ratio:16/10}.trust-cards-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.novita-grid{grid-template-columns:1fr 1fr;gap:12px}.trust-cards-grid{grid-template-columns:1fr}.wa-help-inner{padding:24px;flex-direction:column;text-align:center}.wa-help-text p{margin:0 auto}.rev-item{font-size:1rem}}
 
-/* Hero: una sola foto moda elegante */
+/* Hero: foto moda elegante professionale */
 .hero-photo{
   position:absolute;
   inset:0;
-  background:url("https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1920&q=90") center 18%/cover no-repeat;
+  background:url("https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=1920&q=90") center 22%/cover no-repeat;
   transform:scale(1.03);
-  animation:heroKenBurns 32s ease-in-out infinite alternate;
+  animation:heroKenBurns 36s ease-in-out infinite alternate;
 }
 .hero-video{display:none!important}
 .hero-overlay{
   position:absolute;
   inset:0;
   z-index:1;
-  background:linear-gradient(180deg,rgba(44,32,20,.35) 0%,rgba(44,32,20,.12) 45%,rgba(250,248,245,.15) 70%,rgba(250,248,245,.9) 100%);
+  background:linear-gradient(180deg,rgba(30,22,14,.42) 0%,rgba(30,22,14,.18) 40%,rgba(250,248,245,.12) 68%,rgba(250,248,245,.92) 100%);
   pointer-events:none;
 }
 @keyframes heroKenBurns{
   0%{transform:scale(1.02) translate(0,0)}
-  100%{transform:scale(1.08) translate(-0.8%,-0.5%)}
+  100%{transform:scale(1.07) translate(-0.6%,-0.4%)}
 }
 .hero-content-buttons-only{
   display:flex;
