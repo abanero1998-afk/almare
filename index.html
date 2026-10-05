@@ -1,144 +1,266 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Almarè Boutique — Moda Donna & Bambino</title>
-  <meta name="theme-color" content="#9a7349">
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="extra.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Almarè Boutique — Moda Donna & Bambino</title>
+<meta name="theme-color" content="#9a7349">
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="extra.css">
+<link rel="stylesheet" href="home.css">
 </head>
 <body>
-  <header class="header" id="header">
-    <div class="header-inner">
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
-      <a href="index.html" class="logo logo-text">Almarè Boutique</a>
-      <nav class="nav-desktop">
-        <div class="nav-item has-dropdown">
-          <a href="products.html">Abbigliamento Donna</a>
-          <div class="dropdown glass">
-            <a href="products.html?cat=completi">Completi</a>
-            <a href="products.html?cat=tshirt">T-Shirt</a>
-            <a href="products.html?cat=pantaloni">Pantaloni</a>
-            <a href="products.html?cat=gonne">Gonne</a>
-            <a href="products.html?cat=coordinati">Coordinati</a>
-            <a href="products.html?cat=sopra-abiti">Sopra Abiti</a>
-          </div>
-        </div>
-        <a href="products.html?gender=bambina">Bambina</a>
-        <a href="products.html?gender=bambino">Bambino</a>
-        <a href="#collezioni">Collezioni</a>
-        <a href="#chi-siamo">Chi Siamo</a>
-      </nav>
-      <div class="header-actions">
-        <a href="cart.html" class="icon-btn cart-btn" aria-label="Carrello">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-          <span class="cart-count">0</span>
-        </a>
-      </div>
-    </div>
-  </header>
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-inner glass">
-      <div class="mobile-nav">
-        <p class="mobile-label">Donna</p>
-        <a href="products.html?cat=completi">Completi</a>
-        <a href="products.html?cat=tshirt">T-Shirt</a>
-        <a href="products.html?cat=pantaloni">Pantaloni</a>
-        <a href="products.html?cat=gonne">Gonne</a>
-        <hr>
-        <a href="products.html?gender=bambina">Bambina</a>
-        <a href="products.html?gender=bambino">Bambino</a>
-        <hr>
-        <a href="orders.html">I tuoi ordini</a>
-        <a href="#chi-siamo">Chi Siamo</a>
-        <a href="resi.html">Resi e rimborsi</a>
-        <a href="cart.html">Carrello</a>
-      </div>
-    </div>
-  </div>
-  <section class="hero">
-    <div class="hero-video-wrap">
-      <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&q=80">
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-fashion-model-posing-in-studio-41224-large.mp4" type="video/mp4">
-      </video>
-      <div class="hero-overlay"></div>
-    </div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">Nuova Stagione</p>
-      <h1 class="hero-title">Eleganza<br>che si sente</h1>
-      <p class="hero-sub">Tessuti pregiati. Silhouette essenziali.</p>
-      <div class="hero-cta">
-        <a href="products.html" class="btn btn-primary">Scopri i prodotti</a>
-        <a href="#collezioni" class="btn btn-ghost">Collezioni</a>
-      </div>
-    </div>
-  </section>
-  <div class="info-bar"><div class="info-bar-track">
-    <a href="#chi-siamo" class="info-item"><span class="info-icon">✦</span><span>Chi Siamo</span></a>
-    <a href="resi.html" class="info-item"><span class="info-icon">↻</span><span>Resi Facili</span></a>
-    <a href="#spedizioni" class="info-item"><span class="info-icon">✦</span><span>Spedizioni 24/48h</span></a>
-    <a href="#chi-siamo" class="info-item"><span class="info-icon">↻</span><span>Chi Siamo</span></a>
-    <a href="resi.html" class="info-item"><span class="info-icon">✦</span><span>Resi Facili</span></a>
-    <a href="#spedizioni" class="info-item"><span class="info-icon">↻</span><span>Spedizioni 24/48h</span></a>
-  </div></div>
-  <section class="section collections" id="collezioni">
-    <div class="section-header"><p class="section-eyebrow">Scopri</p><h2 class="section-title">Collezioni</h2></div>
-    <div class="collections-grid">
-      <article class="collection-card glass"><div class="collection-img"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80" alt="" loading="lazy"></div><div class="collection-content"><h3>Essenziale</h3><p>Tonalità neutre</p><a href="products.html?collection=essenziale" class="link-arrow">Esplora →</a></div></article>
-      <article class="collection-card glass"><div class="collection-img"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80" alt="" loading="lazy"></div><div class="collection-content"><h3>Coordinati</h3><p>Set completi</p><a href="products.html?collection=coordinati" class="link-arrow">Esplora →</a></div></article>
-      <article class="collection-card glass"><div class="collection-img"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80" alt="" loading="lazy"></div><div class="collection-content"><h3>Bambina</h3><p>Per le più piccole</p><a href="products.html?gender=bambina" class="link-arrow">Esplora →</a></div></article>
-      <article class="collection-card glass"><div class="collection-img"><img src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=800&q=80" alt="" loading="lazy"></div><div class="collection-content"><h3>Bambino</h3><p>Per i più piccoli</p><a href="products.html?gender=bambino" class="link-arrow">Esplora →</a></div></article>
-    </div>
-  </section>
-  <section class="section products" id="prodotti">
-    <div class="section-header with-action"><div><p class="section-eyebrow">Tutto</p><h2 class="section-title">I Nostri Prodotti</h2></div>
-    <div class="scroll-controls"><button class="scroll-btn" id="prodPrev">←</button><button class="scroll-btn" id="prodNext">→</button></div></div>
-    <div class="products-scroll" id="productsScroll">
-      <article class="product-card glass" data-id="p1"><div class="product-img"><a href="product.html?id=p1"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80" alt="" loading="lazy"></a><button class="quick-add">+ Aggiungi</button></div><div class="product-info"><p class="product-cat">Abiti</p><h3><a href="product.html?id=p1">Abito Fluido Beige</a></h3><p class="product-price">€ 189</p></div></article>
-      <article class="product-card glass" data-id="p2"><div class="product-img"><a href="product.html?id=p2"><img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80" alt="" loading="lazy"></a><button class="quick-add">+ Aggiungi</button></div><div class="product-info"><p class="product-cat">Completi</p><h3><a href="product.html?id=p2">Completo Coordinato</a></h3><p class="product-price">€ 249</p></div></article>
-      <article class="product-card glass" data-id="p4"><div class="product-img"><a href="product.html?id=p4"><img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80" alt="" loading="lazy"></a><button class="quick-add">+ Aggiungi</button></div><div class="product-info"><p class="product-cat">T-Shirt</p><h3><a href="product.html?id=p4">T-Shirt Seta</a></h3><p class="product-price">€ 79</p></div></article>
-      <article class="product-card glass" data-id="g1"><div class="product-img"><a href="product.html?id=g1"><img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&q=80" alt="" loading="lazy"></a><button class="quick-add">+ Aggiungi</button></div><div class="product-info"><p class="product-cat">Bambina</p><h3><a href="product.html?id=g1">Body Neonata</a></h3><p class="product-price">€ 28</p></div></article>
-    </div>
-    <p style="text-align:center;margin-top:28px"><a href="products.html" class="btn btn-primary">Vedi tutti</a></p>
-  </section>
-  <section class="section about" id="chi-siamo">
-    <div class="about-grid">
-      <div class="about-text">
-        <p class="section-eyebrow">La nostra storia</p>
-        <h2 class="section-title">Chi Siamo</h2>
-        <p class="about-body">Almarè Boutique nasce dall’amore per i dettagli e i tessuti autentici.</p>
-        <a href="products.html" class="btn btn-primary">Scopri la collezione</a>
-      </div>
-      <div class="about-visual glass"><img src="https://images.unsplash.com/photo-1441984904996-e0b69204d0b5?w=900&q=80" alt="" loading="lazy"></div>
-    </div>
-  </section>
-  <section class="section shipping" id="spedizioni">
-    <div class="section-header centered"><p class="section-eyebrow">Servizio</p><h2 class="section-title">Spedizioni & Resi</h2></div>
-    <div class="shipping-grid">
-      <div class="ship-card glass"><div class="ship-icon">📦</div><h3>Spedizione Rapida</h3><p>24/48h in Italia.</p></div>
-      <div class="ship-card glass"><div class="ship-icon">↻</div><h3>Resi Facili</h3><p>30 giorni, reso gratuito.</p></div>
-      <div class="ship-card glass"><div class="ship-icon">✦</div><h3>Confezione Premium</h3><p>Packaging elegante.</p></div>
-    </div>
-  </section>
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand"><a href="index.html" class="logo logo-text">Almarè Boutique</a></div>
-      <div class="footer-links">
-        <div><h4>Shop</h4><a href="products.html">Donna</a><a href="products.html?gender=bambina">Bambina</a><a href="products.html?gender=bambino">Bambino</a></div>
-        <div><h4>Info</h4><a href="orders.html">I tuoi ordini</a><a href="#chi-siamo">Chi Siamo</a><a href="resi.html">Resi e rimborsi</a></div>
-      </div>
-    </div>
-    <div class="footer-bottom"><p>© 2026 Almarè Boutique</p></div>
-  </footer>
-  <button type="button" class="install-btn" id="installBtn" hidden>Installa app</button>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="config.js"></script>
-  <script src="data.js"></script>
-  <script src="db.js"></script>
-  <script src="cart.js"></script>
-  <script src="script.js"></script>
+<header class="header" id="header">
+<div class="header-inner">
+<button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+<a href="index.html" class="logo logo-text">Almarè Boutique</a>
+<nav class="nav-desktop">
+<div class="nav-item has-dropdown">
+<a href="products.html">Abbigliamento Donna</a>
+<div class="dropdown glass">
+<a href="products.html?cat=completi">Completi</a>
+<a href="products.html?cat=tshirt">T-Shirt</a>
+<a href="products.html?cat=pantaloni">Pantaloni</a>
+<a href="products.html?cat=gonne">Gonne</a>
+<a href="products.html?cat=coordinati">Coordinati</a>
+<a href="products.html?cat=sopra-abiti">Sopra Abiti</a>
+</div>
+</div>
+<a href="products.html?gender=bambina">Bambina</a>
+<a href="products.html?gender=bambino">Bambino</a>
+<a href="#collezioni">Collezioni</a>
+<a href="#chi-siamo">Chi Siamo</a>
+</nav>
+<div class="header-actions">
+<a href="cart.html" class="icon-btn cart-btn" aria-label="Carrello">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+<span class="cart-count">0</span>
+</a>
+</div>
+</div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-menu-inner glass">
+<div class="mobile-nav">
+<p class="mobile-label">Donna</p>
+<a href="products.html?cat=completi">Completi</a>
+<a href="products.html?cat=tshirt">T-Shirt</a>
+<a href="products.html?cat=pantaloni">Pantaloni</a>
+<a href="products.html?cat=gonne">Gonne</a>
+<hr>
+<a href="products.html?gender=bambina">Bambina</a>
+<a href="products.html?gender=bambino">Bambino</a>
+<hr>
+<a href="orders.html">I tuoi ordini</a>
+<a href="#chi-siamo">Chi Siamo</a>
+<a href="resi.html">Resi e rimborsi</a>
+<a href="cart.html">Carrello</a>
+</div>
+</div>
+</div>
+
+<section class="hero">
+<div class="hero-video-wrap">
+<video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&q=80">
+<source src="https://assets.mixkit.co/videos/preview/mixkit-fashion-model-posing-in-studio-41224-large.mp4" type="video/mp4">
+</video>
+<div class="hero-overlay"></div>
+</div>
+<div class="hero-content">
+<p class="hero-eyebrow">Nuova Stagione</p>
+<h1 class="hero-title">Eleganza<br>che si sente</h1>
+<p class="hero-sub">Tessuti pregiati. Silhouette essenziali.</p>
+<div class="hero-cta">
+<a href="products.html" class="btn btn-primary">Scopri i prodotti</a>
+<a href="#novita" class="btn btn-ghost">Novità</a>
+</div>
+</div>
+</section>
+
+<div class="trust-strip"><div class="trust-strip-inner">
+<span><span class="trust-ico">🚚</span> Spedizione veloce 24/48h</span>
+<span><span class="trust-ico">💬</span> Assistenza WhatsApp</span>
+<span><span class="trust-ico">↻</span> Reso facile</span>
+<span><span class="trust-ico">💳</span> Pagamenti sicuri</span>
+</div></div>
+
+<section class="section home-novita" id="novita">
+<div class="section-header centered">
+<p class="section-eyebrow">Appena arrivati</p>
+<h2 class="section-title">Novità del momento</h2>
+</div>
+<div class="novita-grid">
+<article class="mini-card" data-id="p1">
+<a href="product.html?id=p1" class="mini-card-img"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500&q=80" alt="Abito" loading="lazy"></a>
+<div class="mini-card-body"><h3><a href="product.html?id=p1">Abito Fluido Beige</a></h3><p class="mini-price">€ 189</p>
+<button type="button" class="mini-add" data-id="p1">Aggiungi</button></div>
+</article>
+<article class="mini-card" data-id="p2">
+<a href="product.html?id=p2" class="mini-card-img"><img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=500&q=80" alt="Completo" loading="lazy"></a>
+<div class="mini-card-body"><h3><a href="product.html?id=p2">Completo Coordinato</a></h3><p class="mini-price">€ 249</p>
+<button type="button" class="mini-add" data-id="p2">Aggiungi</button></div>
+</article>
+<article class="mini-card" data-id="p4">
+<a href="product.html?id=p4" class="mini-card-img"><img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500&q=80" alt="T-Shirt" loading="lazy"></a>
+<div class="mini-card-body"><h3><a href="product.html?id=p4">T-Shirt Seta Naturale</a></h3><p class="mini-price">€ 79</p>
+<button type="button" class="mini-add" data-id="p4">Aggiungi</button></div>
+</article>
+<article class="mini-card" data-id="p3">
+<a href="product.html?id=p3" class="mini-card-img"><img src="https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=500&q=80" alt="Gonna" loading="lazy"></a>
+<div class="mini-card-body"><h3><a href="product.html?id=p3">Gonna Midi Plissettata</a></h3><p class="mini-price">€ 129</p>
+<button type="button" class="mini-add" data-id="p3">Aggiungi</button></div>
+</article>
+</div>
+<p class="centered-cta"><a href="products.html" class="btn btn-primary">Vedi tutto</a></p>
+</section>
+
+<section class="reviews-marquee" aria-label="Recensioni verificate">
+<div class="reviews-head">
+<p class="section-eyebrow">Recensioni verificate</p>
+<div class="reviews-stars">★★★★★</div>
+</div>
+<div class="reviews-track-wrap">
+<div class="reviews-track">
+<span class="rev-item"><span class="stars">★★★★★</span> “Tessuti meravigliosi, vestibilità perfetta.” — Chiara</span>
+<span class="rev-item"><span class="stars">★★★★★</span> “Spedizione rapidissima e packaging elegante.” — Marta</span>
+<span class="rev-item"><span class="stars">★★★★★</span> “Il completo beige è un must, lo consiglio.” — Francesca</span>
+<span class="rev-item"><span class="stars">★★★★★</span> “Qualità premium, reso semplicissimo.” — Elena</span>
+<span class="rev-item"><span class="stars">★★★★★</span> “Body neonato sofficissimi, ottima taglia.” — Giulia</span>
+<span class="rev-item"><span class="stars">★★★★★</span> “Assistenza WhatsApp sempre disponibile.” — Sara</span>
+<span class="rev-item"><span class="stars">★★★★★</span> “Tessuti meravigliosi, vestibilità perfetta.” — Chiara</span>
+<span class="rev-item"><span class="stars">★★★★★</span> “Spedizione rapidissima e packaging elegante.” — Marta</span>
+<span class="rev-item"><span class="stars">★★★★★</span> “Il completo beige è un must, lo consiglio.” — Francesca</span>
+<span class="rev-item"><span class="stars">★★★★★</span> “Qualità premium, reso semplicissimo.” — Elena</span>
+</div>
+</div>
+</section>
+
+<section class="wa-help">
+<div class="wa-help-inner glass">
+<div class="wa-help-text">
+<h2>Hai bisogno di aiuto?</h2>
+<p>Dubbi su <strong>taglie</strong> o <strong>disponibilità</strong>? Scrivici su WhatsApp, ti rispondiamo subito.</p>
+</div>
+<a class="wa-btn" href="https://wa.me/393334046169?text=Ciao%20Almar%C3%A8%2C%20vorrei%20info%20su%20taglie%20e%20disponibilit%C3%A0" target="_blank" rel="noopener">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+Scrivici su WhatsApp
+</a>
+</div>
+</section>
+
+<section class="section look-banners" id="collezioni">
+<div class="look-grid">
+<a href="products.html" class="look-card">
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=80" alt="Donna" loading="lazy">
+<div class="look-overlay"><p class="look-eyebrow">Donna</p><h3>Completa il look</h3><span class="look-cta">Scopri ora →</span></div>
+</a>
+<a href="products.html?gender=bambino" class="look-card">
+<img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=900&q=80" alt="Neonato" loading="lazy">
+<div class="look-overlay"><p class="look-eyebrow">0–12 mesi</p><h3>Neonato</h3><span class="look-cta">Scopri ora →</span></div>
+</a>
+<a href="products.html?gender=bambina" class="look-card">
+<img src="https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=900&q=80" alt="Bambina" loading="lazy">
+<div class="look-overlay"><p class="look-eyebrow">Bambina</p><h3>Stile raffinato</h3><span class="look-cta">Scopri ora →</span></div>
+</a>
+</div>
+</section>
+
+<section class="section gift-section" id="gift">
+<div class="section-header centered">
+<p class="section-eyebrow">Regala Almarè</p>
+<h2 class="section-title">Gift Card</h2>
+<p class="section-sub">Scegli l’importo e aggiungi al carrello</p>
+</div>
+<div class="gift-grid">
+<article class="gift-card glass">
+<div class="gift-amount">€ 25</div><p>Idea regalo leggera</p>
+<button type="button" class="btn btn-primary gift-add" data-price="25">Aggiungi al carrello</button>
+</article>
+<article class="gift-card glass featured">
+<div class="gift-badge">Popolare</div>
+<div class="gift-amount">€ 50</div><p>Il regalo più scelto</p>
+<button type="button" class="btn btn-primary gift-add" data-price="50">Aggiungi al carrello</button>
+</article>
+<article class="gift-card glass">
+<div class="gift-amount">€ 100</div><p>Esperienza completa</p>
+<button type="button" class="btn btn-primary gift-add" data-price="100">Aggiungi al carrello</button>
+</article>
+</div>
+<div class="pay-methods">
+<p>Metodi di pagamento accettati</p>
+<div class="pay-logos">
+<span class="pay-logo">Visa</span><span class="pay-logo">Mastercard</span><span class="pay-logo">PayPal</span>
+<span class="pay-logo">Apple Pay</span><span class="pay-logo">Google Pay</span><span class="pay-logo">Contrassegno</span>
+</div>
+</div>
+</section>
+
+<section class="section trust-cards">
+<div class="trust-cards-grid">
+<div class="trust-card glass">
+<div class="trust-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+<h3>Spedizione veloce</h3><p>24/48h in tutta Italia con tracking</p>
+</div>
+<div class="trust-card glass">
+<div class="trust-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+<h3>Pagamenti sicuri</h3><p>Carta, PayPal e checkout protetto</p>
+</div>
+<div class="trust-card glass">
+<div class="trust-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></div>
+<h3>Reso facile</h3><p>30 giorni, procedura semplice</p>
+</div>
+<div class="trust-card glass">
+<div class="trust-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+<h3>Assistenza WhatsApp 24h</h3>
+<p><a href="https://wa.me/393334046169" target="_blank" rel="noopener">333 404 6169</a> — ti rispondiamo subito</p>
+</div>
+</div>
+</section>
+
+<section class="section about" id="chi-siamo">
+<div class="about-grid">
+<div class="about-text">
+<p class="section-eyebrow">La nostra storia</p>
+<h2 class="section-title">Chi Siamo</h2>
+<p class="about-body">Almarè Boutique nasce dall’amore per i dettagli e i tessuti autentici. Ogni capo è pensato per durare.</p>
+<a href="products.html" class="btn btn-primary">Scopri la collezione</a>
+</div>
+<div class="about-visual glass">
+<img src="https://images.unsplash.com/photo-1441984904996-e0b69204d0b5?w=900&q=80" alt="Almarè" loading="lazy">
+</div>
+</div>
+</section>
+
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-brand"><a href="index.html" class="logo logo-text">Almarè Boutique</a>
+<p>Moda donna, bambina e bambino.</p></div>
+<div class="footer-links">
+<div><h4>Shop</h4><a href="products.html">Donna</a><a href="products.html?gender=bambina">Bambina</a><a href="products.html?gender=bambino">Bambino</a></div>
+<div><h4>Info</h4><a href="orders.html">I tuoi ordini</a><a href="#chi-siamo">Chi Siamo</a><a href="resi.html">Resi e rimborsi</a></div>
+<div><h4>Contatti</h4><a href="https://wa.me/393334046169" target="_blank" rel="noopener">WhatsApp 333 404 6169</a></div>
+</div>
+</div>
+<div class="footer-bottom"><p>© 2026 Almarè Boutique</p></div>
+</footer>
+
+<button type="button" class="install-btn" id="installBtn" hidden>Installa app</button>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="data.js"></script>
+<script src="db.js"></script>
+<script src="cart.js"></script>
+<script src="script.js"></script>
+<script>
+const catalogFallback={p1:{id:'p1',name:'Abito Fluido Beige',price:189,image:'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80'},p2:{id:'p2',name:'Completo Coordinato',price:249,image:'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80'},p3:{id:'p3',name:'Gonna Midi Plissettata',price:129,image:'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=600&q=80'},p4:{id:'p4',name:'T-Shirt Seta Naturale',price:79,image:'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80'}};
+document.querySelectorAll('.mini-add').forEach(btn=>{
+  btn.addEventListener('click',e=>{e.preventDefault();const p=catalogFallback[btn.dataset.id];if(p&&window.AlmareCart){AlmareCart.add({...p,size:'',color:'',qty:1});btn.textContent='✓ Aggiunto';setTimeout(()=>btn.textContent='Aggiungi',1200);}});
+});
+document.querySelectorAll('.gift-add').forEach(btn=>{
+  btn.addEventListener('click',()=>{const price=Number(btn.dataset.price);if(window.AlmareCart){AlmareCart.add({id:'gift-'+price,name:'Gift Card € '+price,price,image:'https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=400&q=80',size:'',color:'',qty:1});btn.textContent='✓ Aggiunta';setTimeout(()=>btn.textContent='Aggiungi al carrello',1400);}});
+});
+</script>
 </body>
 </html>
