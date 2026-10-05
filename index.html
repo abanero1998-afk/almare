@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Almaré — Moda Donna & Bambina</title>
+  <meta name="description" content="Almaré — Abbigliamento donna elegante, completi, t-shirt, pantaloni, gonne, coordinati e collezione bambina. Spedizioni rapide, resi facili.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- NAV -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="#" class="logo">Almaré</a>
+      <nav class="nav-desktop">
+        <div class="nav-item has-dropdown">
+          <a href="#prodotti">Abbigliamento Donna</a>
+          <div class="dropdown glass">
+            <a href="#prodotti">Completi</a>
+            <a href="#prodotti">T-Shirt</a>
+            <a href="#prodotti">Pantaloni</a>
+            <a href="#prodotti">Gonne</a>
+            <a href="#prodotti">Coordinati</a>
+            <a href="#prodotti">Sopra Abiti</a>
+            <a href="#prodotti">Bambina / Bambino</a>
+          </div>
+        </div>
+        <a href="#collezioni">Collezioni</a>
+        <a href="#chi-siamo">Chi Siamo</a>
+        <a href="#spedizioni">Spedizioni</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" aria-label="Cerca">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="icon-btn cart-btn" aria-label="Carrello">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner glass">
+      <div class="mobile-nav">
+        <p class="mobile-label">Abbigliamento Donna</p>
+        <a href="#prodotti">Completi</a>
+        <a href="#prodotti">T-Shirt</a>
+        <a href="#prodotti">Pantaloni</a>
+        <a href="#prodotti">Gonne</a>
+        <a href="#prodotti">Coordinati</a>
+        <a href="#prodotti">Sopra Abiti</a>
+        <a href="#prodotti">Bambina / Bambino</a>
+        <hr>
+        <a href="#collezioni">Collezioni</a>
+        <a href="#chi-siamo">Chi Siamo</a>
+        <a href="#spedizioni">Spedizioni & Resi</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-video-wrap">
+      <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&q=80">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-fashion-model-posing-in-studio-41224-large.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Nuova Stagione</p>
+      <h1 class="hero-title">Eleganza<br>che si sente</h1>
+      <p class="hero-sub">Tessuti pregiati. Silhouette essenziali. La collezione Autunno/Inverno è arrivata.</p>
+      <div class="hero-cta">
+        <a href="#prodotti" class="btn btn-primary">Scopri i prodotti</a>
+        <a href="#collezioni" class="btn btn-ghost">Collezioni</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scorri</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- FLOATING INFO BAR -->
+  <div class="info-bar" id="infoBar">
+    <div class="info-bar-track">
+      <a href="#chi-siamo" class="info-item"><span class="info-icon">✦</span><span>Chi Siamo</span></a>
+      <a href="#spedizioni" class="info-item"><span class="info-icon">↻</span><span>Resi Facili</span></a>
+      <a href="#spedizioni" class="info-item"><span class="info-icon">✦</span><span>Spedizioni 24/48h</span></a>
+      <a href="#chi-siamo" class="info-item"><span class="info-icon">↻</span><span>Chi Siamo</span></a>
+      <a href="#spedizioni" class="info-item"><span class="info-icon">✦</span><span>Resi Facili</span></a>
+      <a href="#spedizioni" class="info-item"><span class="info-icon">↻</span><span>Spedizioni 24/48h</span></a>
+      <a href="#chi-siamo" class="info-item"><span class="info-icon">✦</span><span>Chi Siamo</span></a>
+      <a href="#spedizioni" class="info-item"><span class="info-icon">↻</span><span>Resi Facili</span></a>
+      <a href="#spedizioni" class="info-item"><span class="info-icon">✦</span><span>Spedizioni 24/48h</span></a>
+    </div>
+  </div>
+
+  <!-- COLLECTIONS -->
+  <section class="section collections" id="collezioni">
+    <div class="section-header">
+      <p class="section-eyebrow">Scopri</p>
+      <h2 class="section-title">Collezioni</h2>
+    </div>
+    <div class="collections-grid">
+      <article class="collection-card glass">
+        <div class="collection-img"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80" alt="Collezione Essenziale" loading="lazy"></div>
+        <div class="collection-content"><h3>Essenziale</h3><p>Pezzi must-have in tonalità neutre</p><a href="#prodotti" class="link-arrow">Esplora →</a></div>
+      </article>
+      <article class="collection-card glass">
+        <div class="collection-img"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80" alt="Collezione Coordinati" loading="lazy"></div>
+        <div class="collection-content"><h3>Coordinati</h3><p>Set completi per un look impeccabile</p><a href="#prodotti" class="link-arrow">Esplora →</a></div>
+      </article>
+      <article class="collection-card glass">
+        <div class="collection-img"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80" alt="Collezione Bambina" loading="lazy"></div>
+        <div class="collection-content"><h3>Bambina / Bambino</h3><p>Stile raffinato anche per i più piccoli</p><a href="#prodotti" class="link-arrow">Esplora →</a></div>
+      </article>
+      <article class="collection-card glass">
+        <div class="collection-img"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80" alt="Collezione Abiti" loading="lazy"></div>
+        <div class="collection-content"><h3>Sopra Abiti</h3><p>Cappotti e giacche dal taglio sartoriale</p><a href="#prodotti" class="link-arrow">Esplora →</a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section products" id="prodotti">
+    <div class="section-header with-action">
+      <div><p class="section-eyebrow">Tutto</p><h2 class="section-title">I Nostri Prodotti</h2></div>
+      <div class="scroll-controls">
+        <button class="scroll-btn" id="prodPrev" aria-label="Precedente">←</button>
+        <button class="scroll-btn" id="prodNext" aria-label="Successivo">→</button>
+      </div>
+    </div>
+    <div class="products-scroll" id="productsScroll">
+      <article class="product-card glass"><div class="product-img"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80" alt="Abito fluido beige" loading="lazy"><button class="quick-add">+ Aggiungi</button></div><div class="product-info"><p class="product-cat">Abiti</p><h3>Abito Fluido Beige</h3><p class="product-price">€ 189</p></div></article>
+      <article class="product-card glass"><div class="product-img"><img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80" alt="Completo coordinato" loading="lazy"><button class="quick-add">+ Aggiungi</button></div><div class="product-info"><p class="product-cat">Completi</p><h3>Completo Coordinato Crema</h3><p class="product-price">€ 249</p></div></article>
+      <article class="product-card glass"><div class="product-img"><img src="https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=600&q=80" alt="Gonna midi" loading="lazy"><button class="quick-add">+ Aggiungi</button></div><div class="product-info"><p class="product-cat">Gonne</p><h3>Gonna Midi Plissettata</h3><p class="product-price">€ 129</p></div></article>
+      <article class="product-card glass"><div class="product-img"><img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80" alt="T-shirt premium" loading="lazy"><button class="quick-add">+ Aggiungi</button></div><div class="product-info"><p class="product-cat">T-Shirt</p><h3>T-Shirt Seta Naturale</h3><p class="product-price">€ 79</p></div></article>
+      <article class="product-card glass"><div class="product-img"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80" alt="Cappotto lungo" loading="lazy"><button class="quick-add">+ Aggiungi</button></div><div class="product-info"><p class="product-cat">Sopra Abiti</p><h3>Cappotto Cashmere</h3><p class="product-price">€ 389</p></div></article>
+      <article class="product-card glass"><div class="product-img"><img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80" alt="Pantaloni wide" loading="lazy"><button class="quick-add">+ Aggiungi</button></div><div class="product-info"><p class="product-cat">Pantaloni</p><h3>Pantaloni Wide Leg</h3><p class="product-price">€ 159</p></div></article>
+      <article class="product-card glass"><div class="product-img"><img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&q=80" alt="Coordinato bambina" loading="lazy"><button class="quick-add">+ Aggiungi</button></div><div class="product-info"><p class="product-cat">Bambina</p><h3>Coordinato Bambina Lino</h3><p class="product-price">€ 98</p></div></article>
+      <article class="product-card glass"><div class="product-img"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80" alt="Blazer sartoriale" loading="lazy"><button class="quick-add">+ Aggiungi</button></div><div class="product-info"><p class="product-cat">Sopra Abiti</p><h3>Blazer Sartoriale</h3><p class="product-price">€ 219</p></div></article>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about" id="chi-siamo">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-eyebrow">La nostra storia</p>
+        <h2 class="section-title">Chi Siamo</h2>
+        <p class="about-body">Almaré nasce dall’amore per i dettagli e i tessuti autentici. Ogni capo è pensato per durare, per essere indossato e amato stagione dopo stagione.</p>
+        <p class="about-body">Selezioniamo solo materie prime naturali e lavorazioni artigianali. Il risultato? Un guardaroba essenziale, sofisticato e senza tempo.</p>
+        <a href="#prodotti" class="btn btn-primary">Scopri la collezione</a>
+      </div>
+      <div class="about-visual glass">
+        <img src="https://images.unsplash.com/photo-1441984904996-e0b69204d0b5?w=900&q=80" alt="Almaré" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- SHIPPING -->
+  <section class="section shipping" id="spedizioni">
+    <div class="section-header centered">
+      <p class="section-eyebrow">Servizio</p>
+      <h2 class="section-title">Spedizioni & Resi</h2>
+    </div>
+    <div class="shipping-grid">
+      <div class="ship-card glass"><div class="ship-icon">📦</div><h3>Spedizione Rapida</h3><p>Consegna in 24/48 ore in tutta Italia. Tracciamento in tempo reale su ogni ordine.</p></div>
+      <div class="ship-card glass"><div class="ship-icon">↻</div><h3>Resi Facili</h3><p>30 giorni per cambiare idea. Reso gratuito e procedura semplice online.</p></div>
+      <div class="ship-card glass"><div class="ship-icon">✦</div><h3>Confezione Premium</h3><p>Ogni ordine arriva in packaging elegante, pronto per essere regalato.</p></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo">Almaré</a>
+        <p>Moda donna e bambina. Tessuti pregiati, design essenziale.</p>
+      </div>
+      <div class="footer-links">
+        <div><h4>Shop</h4><a href="#prodotti">Completi</a><a href="#prodotti">T-Shirt</a><a href="#prodotti">Pantaloni</a><a href="#prodotti">Gonne</a><a href="#prodotti">Bambina</a></div>
+        <div><h4>Info</h4><a href="#chi-siamo">Chi Siamo</a><a href="#spedizioni">Spedizioni</a><a href="#spedizioni">Resi</a><a href="#">Contatti</a></div>
+        <div><h4>Seguici</h4><a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">Newsletter</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Almaré. Tutti i diritti riservati.</p></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
