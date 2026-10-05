@@ -1,98 +1,67 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prodotto — Almarè Boutique</title>
-  <meta name="theme-color" content="#9a7349">
-  <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    .pd { max-width: 1100px; margin: 0 auto; padding: 120px 24px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-    .pd-img { border-radius: var(--radius); overflow: hidden; background: var(--beige-100); aspect-ratio: 3/4; }
-    .pd-img img { width: 100%; height: 100%; object-fit: cover; }
-    .pd-cat { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--beige-500); margin-bottom: 8px; }
-    .pd-name { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 400; margin-bottom: 12px; line-height: 1.2; }
-    .pd-price { font-size: 1.35rem; font-weight: 500; margin-bottom: 20px; }
-    .pd-desc { color: var(--text-soft); margin-bottom: 28px; line-height: 1.7; }
-    .pd-label { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--beige-500); margin-bottom: 10px; font-weight: 500; }
-    .pd-opts { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-    .pd-opt { padding: 10px 16px; border-radius: 50px; border: 1px solid var(--glass-border); background: var(--glass); font-size: .88rem; cursor: pointer; transition: .2s; }
-    .pd-opt:hover, .pd-opt.active { background: var(--beige-600); color: #fff; border-color: var(--beige-600); }
-    .pd-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
-    .pd-actions .btn { min-width: 160px; justify-content: center; }
-    .pd-meta { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--beige-200); font-size: .9rem; color: var(--text-soft); }
-    .pd-meta li { margin-bottom: 6px; list-style: none; }
-    .pd-back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 24px; font-size: .9rem; color: var(--text-soft); }
-    .pd-back:hover { color: var(--beige-600); }
-    @media (max-width: 768px) { .pd { grid-template-columns: 1fr; gap: 28px; padding-top: 100px; } }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prodotto — Almarè Boutique</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="extra.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+.pd{max-width:1100px;margin:0 auto;padding:120px 24px 80px;display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.pd-img{border-radius:20px;overflow:hidden;aspect-ratio:3/4;background:#f5f0e8}
+.pd-img img{width:100%;height:100%;object-fit:cover}
+.pd-name{font-family:Cormorant Garamond,serif;font-size:2rem;font-weight:400;margin:8px 0}
+.pd-price{font-size:1.3rem;margin-bottom:16px}
+.pd-opt{padding:10px 16px;border-radius:50px;border:1px solid #e8dfd0;margin:4px;cursor:pointer;background:#fffcf7}
+.pd-opt.active{background:#9a7349;color:#fff}
+@media(max-width:768px){.pd{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-  <header class="header scrolled" id="header">
-    <div class="header-inner">
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
-      <a href="index.html" class="logo logo-text">Almarè Boutique</a>
-      <nav class="nav-desktop">
-        <a href="products.html">Shop</a>
-        <a href="products.html?age=neonato">Bambino</a>
-        <a href="index.html#collezioni">Collezioni</a>
-      </nav>
-      <div class="header-actions">
-        <a href="cart.html" class="icon-btn cart-btn" aria-label="Carrello">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-          <span class="cart-count">0</span>
-        </a>
-      </div>
-    </div>
-  </header>
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-inner glass">
-      <div class="mobile-nav">
-        <a href="products.html">Shop Donna</a>
-        <a href="products.html?age=neonato">Neonato</a>
-        <a href="products.html?age=2anni">2 anni</a>
-        <a href="products.html?age=14anni">14 anni</a>
-        <a href="cart.html">Carrello</a>
-      </div>
-    </div>
-  </div>
-  <main class="pd" id="productMain"><p style="grid-column:1/-1;color:var(--text-soft)">Caricamento…</p></main>
-  <button type="button" class="install-btn" id="installBtn" hidden>
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="m8 11 4 4 4-4"/><path d="M4 19h16"/></svg>
-    Installa app
-  </button>
-  <script src="data.js"></script>
-  <script src="cart.js"></script>
-  <script>
-    const menuToggle=document.getElementById('menuToggle');
-    const mobileMenu=document.getElementById('mobileMenu');
-    menuToggle?.addEventListener('click',()=>{mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
-    mobileMenu?.addEventListener('click',e=>{if(e.target===mobileMenu){mobileMenu.classList.remove('open');document.body.style.overflow='';}});
-    const id=new URLSearchParams(location.search).get('id');
-    const catalog=getCatalog();
-    const p=catalog.products.find(x=>x.id===id);
-    const main=document.getElementById('productMain');
-    if(!p){main.innerHTML='<p>Prodotto non trovato. <a href="products.html">Torna ai prodotti</a></p>';}
-    else{
-      document.title=p.name+' — Almarè Boutique';
-      const sizes=p.sizes||[], colors=p.colors||[];
-      main.innerHTML=`<div><a href="products.html" class="pd-back">← Continua lo shopping</a><div class="pd-img"><img src="${p.image}" alt="${p.name}"></div></div><div><p class="pd-cat">${p.category||''}${p.age?' · '+p.age:''}</p><h1 class="pd-name">${p.name}</h1><p class="pd-price">€ ${Number(p.price).toFixed(0)}</p><p class="pd-desc">Tessuti selezionati e vestibilità studiata. Ideale per un guardaroba essenziale e raffinato. Cura: lavare delicatamente, non candeggiare.</p>${sizes.length?`<div class="pd-label">Taglia</div><div class="pd-opts" id="sizeOpts">${sizes.map((s,i)=>`<button type="button" class="pd-opt${i===0?' active':''}" data-size="${s}">${s}</button>`).join('')}</div>`:''}${colors.length?`<div class="pd-label">Colore</div><div class="pd-opts" id="colorOpts">${colors.map((c,i)=>`<button type="button" class="pd-opt${i===0?' active':''}" data-color="${c}">${c}</button>`).join('')}</div>`:''}<div class="pd-actions"><button type="button" class="btn btn-primary" id="addBtn">Aggiungi al carrello</button><a href="cart.html" class="btn btn-ghost">Vai al carrello</a></div><ul class="pd-meta"><li>✦ Spedizione 24/48h in Italia</li><li>↻ Reso gratuito entro 30 giorni</li><li>✦ Confezione premium inclusa</li></ul></div>`;
-      function pick(sel){document.querySelectorAll(sel+' .pd-opt').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll(sel+' .pd-opt').forEach(b=>b.classList.remove('active'));btn.classList.add('active');});});}
-      pick('#sizeOpts');pick('#colorOpts');
-      document.getElementById('addBtn').onclick=()=>{
-        const size=document.querySelector('#sizeOpts .pd-opt.active')?.dataset.size||'';
-        const color=document.querySelector('#colorOpts .pd-opt.active')?.dataset.color||'';
-        AlmareCart.add({id:p.id,name:p.name,price:p.price,image:p.image,size,color,qty:1});
-        const btn=document.getElementById('addBtn');btn.textContent='✓ Aggiunto';setTimeout(()=>{btn.textContent='Aggiungi al carrello';},1500);
-      };
-    }
-    let deferredPrompt;const installBtn=document.getElementById('installBtn');
-    window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;installBtn.hidden=false;});
-    installBtn?.addEventListener('click',async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;installBtn.hidden=true;});
-    if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});
-  </script>
+<header class="header scrolled"><div class="header-inner">
+<a href="index.html" class="logo logo-text">Almarè Boutique</a>
+<nav class="nav-desktop">
+<a href="products.html">Shop</a>
+<a href="products.html?gender=bambina">Bambina</a>
+<a href="products.html?gender=bambino">Bambino</a>
+<a href="orders.html">I tuoi ordini</a>
+</nav>
+<a href="cart.html" class="icon-btn cart-btn"><span class="cart-count">0</span></a>
+</div></header>
+<main class="pd" id="productMain">Caricamento…</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="data.js"></script>
+<script src="db.js"></script>
+<script src="cart.js"></script>
+<script>
+(async function(){
+  const id=new URLSearchParams(location.search).get('id');
+  const catalog=await getCatalog();
+  const p=catalog.products.find(x=>x.id===id);
+  const main=document.getElementById('productMain');
+  if(!p){main.innerHTML='Prodotto non trovato';return;}
+  const sizes=p.sizes||[],colors=p.colors||[];
+  main.innerHTML=`<div class="pd-img"><img src="${p.image}" alt=""></div><div>
+  <p style="color:#9a7349;font-size:.75rem;text-transform:uppercase">${p.category||''}</p>
+  <h1 class="pd-name">${p.name}</h1>
+  <p class="pd-price">€ ${Number(p.price).toFixed(0)}</p>
+  <p style="color:#5c5346;margin-bottom:20px">Tessuti selezionati, vestibilità studiata.</p>
+  ${sizes.length?`<div style="margin-bottom:12px">${sizes.map((s,i)=>`<button type="button" class="pd-opt${i===0?' active':''}" data-size="${s}">${s}</button>`).join('')}</div>`:''}
+  ${colors.length?`<div style="margin-bottom:20px">${colors.map((c,i)=>`<button type="button" class="pd-opt${i===0?' active':''}" data-color="${c}">${c}</button>`).join('')}</div>`:''}
+  <button type="button" class="btn btn-primary" id="addBtn">Aggiungi al carrello</button>
+  <a href="cart.html" class="btn btn-ghost" style="margin-left:8px">Carrello</a>
+  </div>`;
+  document.querySelectorAll('.pd-opt').forEach(btn=>btn.onclick=()=>{const g=btn.dataset.size?'[data-size]':'[data-color]';document.querySelectorAll('.pd-opt'+g.replace('data-','[data-').replace(']',']')).forEach(b=>b.classList.remove('active'));btn.classList.add('active');});
+  // simpler toggle
+  document.querySelectorAll('[data-size]').forEach(btn=>btn.onclick=()=>{document.querySelectorAll('[data-size]').forEach(b=>b.classList.remove('active'));btn.classList.add('active');});
+  document.querySelectorAll('[data-color]').forEach(btn=>btn.onclick=()=>{document.querySelectorAll('[data-color]').forEach(b=>b.classList.remove('active'));btn.classList.add('active');});
+  document.getElementById('addBtn').onclick=()=>{
+    AlmareCart.add({id:p.id,name:p.name,price:p.price,image:p.image,size:document.querySelector('[data-size].active')?.dataset.size||'',color:document.querySelector('[data-color].active')?.dataset.color||'',qty:1});
+    addBtn.textContent='✓ Aggiunto';setTimeout(()=>addBtn.textContent='Aggiungi al carrello',1500);
+  };
+})();
+</script>
 </body>
 </html>
