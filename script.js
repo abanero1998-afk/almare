@@ -1,7 +1,10 @@
 /* Almaré — Interactions */
+
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.getElementById('header');
-  const onScroll = () => { header.classList.toggle('scrolled', window.scrollY > 40); };
+  const onScroll = () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
@@ -28,23 +31,38 @@ document.addEventListener('DOMContentLoaded', () => {
   const prodPrev = document.getElementById('prodPrev');
   const prodNext = document.getElementById('prodNext');
   const scrollAmount = 304;
-  prodPrev?.addEventListener('click', () => productsScroll.scrollBy({ left: -scrollAmount, behavior: 'smooth' }));
-  prodNext?.addEventListener('click', () => productsScroll.scrollBy({ left: scrollAmount, behavior: 'smooth' }));
 
-  let isDown = false, startX, scrollLeft;
+  prodPrev?.addEventListener('click', () => {
+    productsScroll.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+  prodNext?.addEventListener('click', () => {
+    productsScroll.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  });
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
   productsScroll?.addEventListener('mousedown', (e) => {
     isDown = true;
     productsScroll.classList.add('dragging');
     startX = e.pageX - productsScroll.offsetLeft;
     scrollLeft = productsScroll.scrollLeft;
   });
-  productsScroll?.addEventListener('mouseleave', () => { isDown = false; productsScroll.classList.remove('dragging'); });
-  productsScroll?.addEventListener('mouseup', () => { isDown = false; productsScroll.classList.remove('dragging'); });
+  productsScroll?.addEventListener('mouseleave', () => {
+    isDown = false;
+    productsScroll.classList.remove('dragging');
+  });
+  productsScroll?.addEventListener('mouseup', () => {
+    isDown = false;
+    productsScroll.classList.remove('dragging');
+  });
   productsScroll?.addEventListener('mousemove', (e) => {
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - productsScroll.offsetLeft;
-    productsScroll.scrollLeft = scrollLeft - (x - startX) * 1.4;
+    const walk = (x - startX) * 1.4;
+    productsScroll.scrollLeft = scrollLeft - walk;
   });
 
   let cartCount = 0;
@@ -80,4 +98,64 @@ document.addEventListener('DOMContentLoaded', () => {
     el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
     observer.observe(el);
   });
+
+  const video = document.querySelector('.hero-video');
+  if (video) {
+    video.addEventListener('error', () => {
+      video.style.display = 'none';
+    });
+  }
+
+  if (typeof getCatalog === 'function') {
+    try {
+      const catalog = getCatalog();
+      const scroll = document.getElementById('productsScroll');
+      if (scroll && catalog.products && catalog.products.length) {
+        const list = catalog.products.filter(p => !p.age).slice(0, 8);
+        if (list.length) {
+          scroll.innerHTML = list.map(p => `
+            <article class="product-card glass">
+              <div class="product-img">
+                <img src="${p.image}" alt="${p.name}" loading="lazy">
+                <button class="quick-add">+ Aggiungi</button>
+              </div>
+              <div class="product-info">
+                <p class="product-cat">${p.category || ''}</p>
+                <h3>${p.name}</h3>
+                <p class="product-price">€ ${Number(p.price).toFixed(0)}</p>
+              </div>
+            </article>
+          `).join('');
+          scroll.querySelectorAll('.quick-add').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+              e.preventDefault();
+              btn.textContent = '✓ Aggiunto';
+              btn.style.background = 'var(--beige-600)';
+              btn.style.color = 'white';
+              setTimeout(() => {
+                btn.textContent = '+ Aggiungi';
+                btn.style.background = '';
+                btn.style.color = '';
+              }, 1600);
+            });
+          });
+        }
+      }
+      const colGrid = document.querySelector('.collections-grid');
+      if (colGrid && catalog.collections) {
+        colGrid.innerHTML = catalog.collections.map(c => `
+          <article class="collection-card glass">
+            <div class="collection-img">
+              <img src="${c.image}" alt="${c.name}" loading="lazy">
+            </div>
+            <div class="collection-content">
+              <h3>${c.name}</h3>
+              <p>${c.desc || ''}</p>
+              <a href="products.html?collection=${encodeURIComponent(c.id)}" class="link-arrow">Esplora →</a>
+            </div>
+          </article>
+        `).join('');
+      }
+    } catch (e) { console.warn(e); }
+  }
 });
