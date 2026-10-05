@@ -1,177 +1,184 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prodotti — Almaré</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    .page-hero{padding:140px 28px 48px;max-width:1400px;margin:0 auto}
-    .page-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:400;margin-bottom:8px}
-    .page-hero p{color:var(--text-soft)}
-    .filters-bar{max-width:1400px;margin:0 auto 32px;padding:0 28px;display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end}
-    .filter-group{display:flex;flex-direction:column;gap:6px;min-width:140px}
-    .filter-group label{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--beige-500);font-weight:500}
-    .filter-group select{appearance:none;background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--glass-border);border-radius:50px;padding:10px 36px 10px 16px;font-family:var(--font-body);font-size:.88rem;color:var(--text);cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239a7349' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
-    .filter-reset{padding:10px 20px;border-radius:50px;border:1px solid var(--glass-border);background:transparent;font-size:.85rem;color:var(--text-soft);cursor:pointer}
-    .filter-reset:hover{background:var(--beige-100)}
-    .products-grid{max-width:1400px;margin:0 auto;padding:0 28px 80px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px}
-    .products-grid .product-card{flex:none;width:100%}
-    .no-results{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-soft)}
-    .results-count{max-width:1400px;margin:0 auto 16px;padding:0 28px;font-size:.85rem;color:var(--text-soft)}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prodotti — Almarè Boutique</title>
+<meta name="theme-color" content="#9a7349">
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="extra.css">
+<style>
+.page-hero{padding:140px 28px 48px;max-width:1400px;margin:0 auto}
+.page-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:400;margin-bottom:8px}
+.page-hero p{color:var(--text-soft)}
+.filters-bar{max-width:1400px;margin:0 auto 32px;padding:0 28px;display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end}
+.filter-group{display:flex;flex-direction:column;gap:6px;min-width:130px}
+.filter-group label{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--beige-500);font-weight:500}
+.filter-group select{appearance:none;background:var(--glass);border:1px solid var(--glass-border);border-radius:50px;padding:10px 36px 10px 16px;font-family:var(--font-body);font-size:.88rem;color:var(--text);cursor:pointer}
+.filter-reset{padding:10px 20px;border-radius:50px;border:1px solid var(--glass-border);background:transparent;font-size:.85rem;color:var(--text-soft);cursor:pointer}
+.products-grid{max-width:1400px;margin:0 auto;padding:0 28px 80px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px}
+.products-grid .product-card{flex:none;width:100%}
+.no-results{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-soft)}
+.results-count{max-width:1400px;margin:0 auto 16px;padding:0 28px;font-size:.85rem;color:var(--text-soft)}
+.card-add{width:100%;margin-top:10px;padding:10px;border-radius:50px;background:var(--beige-600);color:#fff;font-size:.85rem;font-weight:500;border:none;cursor:pointer}
+.card-add:hover{background:var(--beige-700)}
+</style>
 </head>
 <body>
-  <header class="header scrolled" id="header">
-    <div class="header-inner">
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
-      <a href="index.html" class="logo">Almaré</a>
-      <nav class="nav-desktop">
-        <div class="nav-item has-dropdown">
-          <a href="products.html">Abbigliamento Donna</a>
-          <div class="dropdown glass">
-            <a href="products.html?cat=completi">Completi</a>
-            <a href="products.html?cat=tshirt">T-Shirt</a>
-            <a href="products.html?cat=pantaloni">Pantaloni</a>
-            <a href="products.html?cat=gonne">Gonne</a>
-            <a href="products.html?cat=coordinati">Coordinati</a>
-            <a href="products.html?cat=sopra-abiti">Sopra Abiti</a>
-          </div>
-        </div>
-        <div class="nav-item has-dropdown">
-          <a href="products.html?age=neonato">Bambino</a>
-          <div class="dropdown glass">
-            <a href="products.html?age=neonato">Neonato 0-12 mesi</a>
-            <a href="products.html?age=2anni">2 anni</a>
-            <a href="products.html?age=14anni">14 anni</a>
-          </div>
-        </div>
-        <a href="index.html#collezioni">Collezioni</a>
-        <a href="index.html#chi-siamo">Chi Siamo</a>
-        <a href="index.html#spedizioni">Spedizioni</a>
-      </nav>
-      <div class="header-actions">
-        <button class="icon-btn cart-btn" aria-label="Carrello">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-          <span class="cart-count">0</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-inner glass">
-      <div class="mobile-nav">
-        <p class="mobile-label">Abbigliamento Donna</p>
-        <a href="products.html?cat=completi">Completi</a>
-        <a href="products.html?cat=tshirt">T-Shirt</a>
-        <a href="products.html?cat=pantaloni">Pantaloni</a>
-        <a href="products.html?cat=gonne">Gonne</a>
-        <a href="products.html?cat=coordinati">Coordinati</a>
-        <a href="products.html?cat=sopra-abiti">Sopra Abiti</a>
-        <hr>
-        <p class="mobile-label">Bambino</p>
-        <a href="products.html?age=neonato">Neonato 0-12 mesi</a>
-        <a href="products.html?age=2anni">2 anni</a>
-        <a href="products.html?age=14anni">14 anni</a>
-        <hr>
-        <a href="index.html#collezioni">Collezioni</a>
-        <a href="index.html#chi-siamo">Chi Siamo</a>
-        <a href="index.html#spedizioni">Spedizioni</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="page-hero">
-    <h1 id="pageTitle">Tutti i prodotti</h1>
-    <p id="pageSub">Scopri la collezione Almaré</p>
-  </div>
-
-  <div class="filters-bar">
-    <div class="filter-group">
-      <label for="fSize">Taglia</label>
-      <select id="fSize"><option value="">Tutte</option></select>
-    </div>
-    <div class="filter-group">
-      <label for="fColor">Colore</label>
-      <select id="fColor"><option value="">Tutti</option></select>
-    </div>
-    <div class="filter-group">
-      <label for="fModel">Modello</label>
-      <select id="fModel"><option value="">Tutti</option></select>
-    </div>
-    <button class="filter-reset" id="filterReset">Reset filtri</button>
-  </div>
-
-  <p class="results-count" id="resultsCount"></p>
-  <div class="products-grid" id="productsGrid"></div>
-
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand"><a href="index.html" class="logo">Almaré</a><p>Moda donna e bambina.</p></div>
-      <div class="footer-links">
-        <div><h4>Shop</h4><a href="products.html">Donna</a><a href="products.html?age=neonato">Neonato</a><a href="products.html?age=2anni">2 anni</a><a href="products.html?age=14anni">14 anni</a></div>
-        <div><h4>Info</h4><a href="index.html#chi-siamo">Chi Siamo</a><a href="index.html#spedizioni">Spedizioni</a></div>
-      </div>
-    </div>
-    <div class="footer-bottom"><p>© 2026 Almaré</p></div>
-  </footer>
-
-  <script src="data.js"></script>
-  <script>
-    const menuToggle=document.getElementById('menuToggle');
-    const mobileMenu=document.getElementById('mobileMenu');
-    menuToggle?.addEventListener('click',()=>{mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
-    mobileMenu?.addEventListener('click',e=>{if(e.target===mobileMenu){mobileMenu.classList.remove('open');document.body.style.overflow='';}});
-
-    const params=new URLSearchParams(location.search);
-    const cat=params.get('cat');
-    const age=params.get('age');
-    const collection=params.get('collection');
-    const titles={completi:'Completi',tshirt:'T-Shirt',pantaloni:'Pantaloni',gonne:'Gonne',coordinati:'Coordinati','sopra-abiti':'Sopra Abiti',abiti:'Abiti',neonato:'Neonato 0-12 mesi','2anni':'Bambino 2 anni','14anni':'Bambino 14 anni'};
-    if(age&&titles[age]){pageTitle.textContent=titles[age];pageSub.textContent='Abbigliamento per '+titles[age].toLowerCase()}
-    else if(cat&&titles[cat]){pageTitle.textContent=titles[cat];pageSub.textContent='Collezione '+titles[cat]}
-
-    let products=getCatalog().products.slice();
-    if(age)products=products.filter(p=>p.age===age);
-    else if(cat)products=products.filter(p=>p.category===cat||p.collection===cat);
-    else if(collection)products=products.filter(p=>p.collection===collection);
-
-    const unique=arr=>[...new Set(arr.flat())].filter(Boolean).sort();
-    const sizes=unique(products.map(p=>p.sizes||[]));
-    const colors=unique(products.map(p=>p.colors||[]));
-    const models=unique(products.map(p=>p.model?[p.model]:[]));
-    const fSize=document.getElementById('fSize');
-    const fColor=document.getElementById('fColor');
-    const fModel=document.getElementById('fModel');
-    sizes.forEach(s=>fSize.innerHTML+=`<option value="${s}">${s}</option>`);
-    colors.forEach(c=>fColor.innerHTML+=`<option value="${c}">${c}</option>`);
-    models.forEach(m=>fModel.innerHTML+=`<option value="${m}">${m}</option>`);
-
-    function render(){
-      const size=fSize.value,color=fColor.value,model=fModel.value;
-      let list=products.filter(p=>{
-        if(size&&!(p.sizes||[]).includes(size))return false;
-        if(color&&!(p.colors||[]).includes(color))return false;
-        if(model&&p.model!==model)return false;
-        return true;
-      });
-      resultsCount.textContent=list.length+' prodotti';
-      const grid=document.getElementById('productsGrid');
-      if(!list.length){grid.innerHTML='<div class="no-results">Nessun prodotto trovato.</div>';return}
-      grid.innerHTML=list.map(p=>`
-        <article class="product-card glass">
-          <div class="product-img"><img src="${p.image}" alt="${p.name}" loading="lazy"><button class="quick-add">+ Aggiungi</button></div>
-          <div class="product-info"><p class="product-cat">${p.category||''}</p><h3>${p.name}</h3><p class="product-price">€ ${Number(p.price).toFixed(0)}</p></div>
-        </article>`).join('');
-      grid.querySelectorAll('.quick-add').forEach(btn=>{
-        btn.addEventListener('click',e=>{e.preventDefault();btn.textContent='✓ Aggiunto';btn.style.background='var(--beige-600)';btn.style.color='white';setTimeout(()=>{btn.textContent='+ Aggiungi';btn.style.background='';btn.style.color=''},1200)});
-      });
-    }
-    fSize.onchange=fColor.onchange=fModel.onchange=render;
-    filterReset.onclick=()=>{fSize.value='';fColor.value='';fModel.value='';render()};
-    render();
-  </script>
+<header class="header scrolled" id="header">
+<div class="header-inner">
+<button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+<a href="index.html" class="logo logo-text">Almarè Boutique</a>
+<nav class="nav-desktop">
+<div class="nav-item has-dropdown">
+<a href="products.html">Abbigliamento Donna</a>
+<div class="dropdown glass">
+<a href="products.html?cat=completi">Completi</a>
+<a href="products.html?cat=tshirt">T-Shirt</a>
+<a href="products.html?cat=pantaloni">Pantaloni</a>
+<a href="products.html?cat=gonne">Gonne</a>
+<a href="products.html?cat=coordinati">Coordinati</a>
+<a href="products.html?cat=sopra-abiti">Sopra Abiti</a>
+</div>
+</div>
+<a href="products.html?gender=bambina">Bambina</a>
+<a href="products.html?gender=bambino">Bambino</a>
+<a href="index.html#collezioni">Collezioni</a>
+</nav>
+<div class="header-actions">
+<a href="cart.html" class="icon-btn cart-btn" aria-label="Carrello">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+<span class="cart-count">0</span>
+</a>
+</div>
+</div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-menu-inner glass">
+<div class="mobile-nav">
+<p class="mobile-label">Abbigliamento Donna</p>
+<a href="products.html?cat=completi">Completi</a>
+<a href="products.html?cat=tshirt">T-Shirt</a>
+<a href="products.html?cat=pantaloni">Pantaloni</a>
+<a href="products.html?cat=gonne">Gonne</a>
+<a href="products.html?cat=coordinati">Coordinati</a>
+<a href="products.html?cat=sopra-abiti">Sopra Abiti</a>
+<hr>
+<a href="products.html?gender=bambina">Bambina</a>
+<a href="products.html?gender=bambino">Bambino</a>
+<hr>
+<a href="orders.html">I tuoi ordini</a>
+<a href="index.html#chi-siamo">Chi Siamo</a>
+<a href="resi.html">Resi e rimborsi</a>
+<a href="cart.html">Carrello</a>
+</div>
+</div>
+</div>
+<div class="page-hero">
+<h1 id="pageTitle">Tutti i prodotti</h1>
+<p id="pageSub">Scopri la collezione Almarè Boutique</p>
+</div>
+<div class="filters-bar">
+<div class="filter-group" id="ageFilterWrap" hidden>
+<label for="fAge">Età</label>
+<select id="fAge">
+<option value="">Tutte</option>
+<option value="neonato">Neonato 0-12 mesi</option>
+<option value="2a">2 anni</option><option value="3a">3 anni</option><option value="4a">4 anni</option>
+<option value="5a">5 anni</option><option value="6a">6 anni</option><option value="7a">7 anni</option>
+<option value="8a">8 anni</option><option value="9a">9 anni</option><option value="10a">10 anni</option>
+<option value="11a">11 anni</option><option value="12a">12 anni</option><option value="13a">13 anni</option>
+<option value="14a">14 anni</option>
+</select>
+</div>
+<div class="filter-group"><label for="fSize">Taglia</label><select id="fSize"><option value="">Tutte</option></select></div>
+<div class="filter-group"><label for="fColor">Colore</label><select id="fColor"><option value="">Tutti</option></select></div>
+<div class="filter-group"><label for="fModel">Modello</label><select id="fModel"><option value="">Tutti</option></select></div>
+<button class="filter-reset" id="filterReset" type="button">Reset filtri</button>
+</div>
+<p class="results-count" id="resultsCount"></p>
+<div class="products-grid" id="productsGrid"></div>
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-brand"><a href="index.html" class="logo logo-text">Almarè Boutique</a></div>
+<div class="footer-links">
+<div><h4>Shop</h4><a href="products.html">Donna</a><a href="products.html?gender=bambina">Bambina</a><a href="products.html?gender=bambino">Bambino</a></div>
+<div><h4>Info</h4><a href="orders.html">I tuoi ordini</a><a href="index.html#chi-siamo">Chi Siamo</a><a href="resi.html">Resi e rimborsi</a></div>
+</div>
+</div>
+<div class="footer-bottom"><p>© 2026 Almarè Boutique</p></div>
+</footer>
+<button type="button" class="install-btn" id="installBtn" hidden>Installa app</button>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="data.js"></script>
+<script src="db.js"></script>
+<script src="cart.js"></script>
+<script>
+const menuToggle=document.getElementById('menuToggle');
+const mobileMenu=document.getElementById('mobileMenu');
+menuToggle?.addEventListener('click',()=>{mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
+mobileMenu?.addEventListener('click',e=>{if(e.target===mobileMenu){mobileMenu.classList.remove('open');document.body.style.overflow='';}});
+const params=new URLSearchParams(location.search);
+const cat=params.get('cat');
+const gender=params.get('gender');
+const collection=params.get('collection');
+if(gender==='bambina'){pageTitle.textContent='Bambina';pageSub.textContent='Filtra per età';ageFilterWrap.hidden=false;}
+else if(gender==='bambino'){pageTitle.textContent='Bambino';pageSub.textContent='Filtra per età';ageFilterWrap.hidden=false;}
+else if(cat){pageTitle.textContent=cat;pageSub.textContent='Collezione '+cat;}
+function ageMatch(p,ageVal){
+  if(!ageVal)return true;
+  if(ageVal==='neonato')return p.age==='neonato';
+  if(p.age===ageVal)return true;
+  if((p.sizes||[]).some(s=>s===ageVal||s.includes(ageVal.replace('a',''))))return true;
+  if(ageVal==='14a'&&['10a','12a','14a'].includes(p.age))return true;
+  return false;
+}
+let allProducts=[],products=[];
+(async function init(){
+  const catalog=await getCatalog();
+  allProducts=catalog.products.slice();
+  products=allProducts.slice();
+  if(gender)products=products.filter(p=>p.gender===gender||p.category===gender);
+  else if(cat)products=products.filter(p=>p.category===cat||p.collection===cat);
+  else if(collection)products=products.filter(p=>p.collection===collection);
+  const unique=arr=>[...new Set(arr.flat())].filter(Boolean).sort();
+  unique(products.map(p=>p.sizes||[])).forEach(s=>fSize.innerHTML+=`<option value="${s}">${s}</option>`);
+  unique(products.map(p=>p.colors||[])).forEach(c=>fColor.innerHTML+=`<option value="${c}">${c}</option>`);
+  unique(products.map(p=>p.model?[p.model]:[])).forEach(m=>fModel.innerHTML+=`<option value="${m}">${m}</option>`);
+  render();
+})();
+function render(){
+  const size=fSize.value,color=fColor.value,model=fModel.value,age=fAge?.value||'';
+  let list=products.filter(p=>{
+    if(size&&!(p.sizes||[]).includes(size))return false;
+    if(color&&!(p.colors||[]).includes(color))return false;
+    if(model&&p.model!==model)return false;
+    if(age&&!ageMatch(p,age))return false;
+    return true;
+  });
+  resultsCount.textContent=list.length+' prodotti';
+  const grid=document.getElementById('productsGrid');
+  if(!list.length){grid.innerHTML='<div class="no-results">Nessun prodotto trovato.</div>';return;}
+  grid.innerHTML=list.map(p=>`<article class="product-card glass" data-id="${p.id}">
+    <div class="product-img"><a href="product.html?id=${p.id}"><img src="${p.image}" alt="${p.name}" loading="lazy"></a>
+    <button class="quick-add" type="button" data-id="${p.id}">+ Aggiungi</button></div>
+    <div class="product-info"><p class="product-cat">${p.category||''}</p><h3><a href="product.html?id=${p.id}">${p.name}</a></h3>
+    <p class="product-price">€ ${Number(p.price).toFixed(0)}</p>
+    <button type="button" class="card-add" data-id="${p.id}">Aggiungi al carrello</button></div></article>`).join('');
+  function addById(id,btn){
+    const prod=list.find(x=>x.id===id)||allProducts.find(x=>x.id===id);
+    if(prod&&window.AlmareCart)AlmareCart.add({id:prod.id,name:prod.name,price:prod.price,image:prod.image,size:(prod.sizes||[])[0]||'',color:(prod.colors||[])[0]||'',qty:1});
+    if(btn){const t=btn.textContent;btn.textContent='✓ Aggiunto';setTimeout(()=>btn.textContent=t,1200);}
+  }
+  grid.querySelectorAll('.quick-add, .card-add').forEach(btn=>btn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();addById(btn.dataset.id,btn);}));
+}
+fSize.onchange=fColor.onchange=fModel.onchange=()=>render();
+fAge?.addEventListener('change',render);
+filterReset.onclick=()=>{fSize.value='';fColor.value='';fModel.value='';if(fAge)fAge.value='';render();};
+if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});
+</script>
 </body>
 </html>
