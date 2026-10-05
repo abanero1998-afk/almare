@@ -56,12 +56,26 @@
 @media(max-width:1000px){.novita-grid{grid-template-columns:repeat(2,1fr)}.look-grid{grid-template-columns:1fr}.look-card{aspect-ratio:16/10}.trust-cards-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.novita-grid{grid-template-columns:1fr 1fr;gap:12px}.trust-cards-grid{grid-template-columns:1fr}.wa-help-inner{padding:24px;flex-direction:column;text-align:center}.wa-help-text p{margin:0 auto}.rev-item{font-size:1rem}}
 
-/* Cinematic hero */
-.hero-video{width:100%;height:100%;object-fit:cover;object-position:center 30%;transform:scale(1.06);animation:heroKenBurns 28s ease-in-out infinite alternate}
-.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(44,32,20,.35) 0%,rgba(44,32,20,.15) 40%,rgba(250,248,245,.25) 70%,rgba(250,248,245,.9) 100%);pointer-events:none}
-@keyframes heroKenBurns{0%{transform:scale(1.04) translate(0,0)}100%{transform:scale(1.12) translate(-1%,-.6%)}}
-
-/* Hero solo pulsanti */
+/* Hero foto abbigliamento femminile elegante */
+.hero-photo{
+  position:absolute;inset:0;
+  background:url("https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1920&q=90") center 20%/cover no-repeat;
+  transform:scale(1.06);
+  animation:heroKenBurns 28s ease-in-out infinite alternate;
+}
+.hero-photo::after{
+  content:"";position:absolute;inset:0;
+  background:url("https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1920&q=85") center 25%/cover no-repeat;
+  opacity:0;animation:heroCrossfade 22s ease-in-out infinite;
+}
+.hero-video{display:none!important}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(44,32,20,.4) 0%,rgba(44,32,20,.18) 42%,rgba(250,248,245,.2) 72%,rgba(250,248,245,.92) 100%);
+  pointer-events:none;
+}
+@keyframes heroKenBurns{0%{transform:scale(1.04) translate(0,0)}100%{transform:scale(1.12) translate(-1.2%,-.8%)}}
+@keyframes heroCrossfade{0%,45%{opacity:0}55%,90%{opacity:.55}100%{opacity:0}}
 .hero-content-buttons-only{display:flex;align-items:flex-end;justify-content:center;height:100%;padding-bottom:12vh;max-width:none;animation:fadeUp 1s ease-out .4s both}
 .hero-content-buttons-only .hero-cta{margin:0}
 .hero-content-buttons-only .btn-ghost{background:rgba(255,252,247,.18);backdrop-filter:blur(8px)}
