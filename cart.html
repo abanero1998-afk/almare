@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrello — Almarè Boutique</title>
+<meta name="theme-color" content="#9a7349">
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.cart-page{max-width:960px;margin:0 auto;padding:120px 24px 100px}
+.cart-page h1{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:400;margin-bottom:28px}
+.cart-empty{text-align:center;padding:48px 20px;color:var(--text-soft)}
+.cart-item{display:grid;grid-template-columns:88px 1fr auto;gap:16px;padding:18px 0;border-bottom:1px solid var(--beige-200);align-items:center}
+.cart-item img{width:88px;height:110px;object-fit:cover;border-radius:12px;background:var(--beige-100)}
+.cart-item h3{font-size:1rem;font-weight:500;margin-bottom:4px}
+.cart-item .meta{font-size:.85rem;color:var(--text-soft);margin-bottom:8px}
+.qty-row{display:flex;align-items:center;gap:8px}
+.qty-row button{width:32px;height:32px;border-radius:50%;border:1px solid var(--glass-border);background:var(--glass);font-size:1rem}
+.qty-row span{min-width:24px;text-align:center}
+.cart-item .price{font-weight:500;white-space:nowrap}
+.cart-item .remove{font-size:.8rem;color:var(--text-soft);margin-top:8px;cursor:pointer;background:none;border:none}
+.cart-item .remove:hover{color:#b54a3a}
+.cart-summary{margin-top:32px;padding:24px;border-radius:var(--radius);background:var(--glass);border:1px solid var(--glass-border);backdrop-filter:blur(16px)}
+.cart-summary .row{display:flex;justify-content:space-between;margin-bottom:10px}
+.cart-summary .total{font-size:1.2rem;font-weight:600;margin-top:12px;padding-top:12px;border-top:1px solid var(--beige-200)}
+.checkout{margin-top:28px}
+.checkout h2{font-family:var(--font-display);font-size:1.4rem;font-weight:400;margin-bottom:16px}
+.checkout label{display:block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--beige-500);margin-bottom:6px}
+.checkout input,.checkout textarea{width:100%;padding:12px 14px;margin-bottom:14px;border-radius:12px;border:1px solid var(--glass-border);background:#fff;font-family:inherit;font-size:.95rem}
+.checkout .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.cart-item{grid-template-columns:72px 1fr}.cart-item .price{grid-column:2}.checkout .grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="header scrolled" id="header">
+<div class="header-inner">
+<a href="index.html" class="logo logo-text">Almarè Boutique</a>
+<nav class="nav-desktop"><a href="products.html">Shop</a><a href="index.html#collezioni">Collezioni</a></nav>
+<div class="header-actions">
+<a href="cart.html" class="icon-btn cart-btn" aria-label="Carrello">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+<span class="cart-count">0</span>
+</a>
+</div>
+</div>
+</header>
+<div class="cart-page">
+<h1>Il tuo carrello</h1>
+<div id="cartList"></div>
+<div class="cart-summary" id="cartSummary" hidden>
+<div class="row"><span>Subtotale</span><span id="subtotal">€ 0</span></div>
+<div class="row"><span>Spedizione</span><span>Calcolata al checkout</span></div>
+<div class="row total"><span>Totale</span><span id="total">€ 0</span></div>
+</div>
+<div class="checkout" id="checkoutBox" hidden>
+<h2>Checkout</h2>
+<p style="color:var(--text-soft);font-size:.9rem;margin-bottom:16px">Compila i dati. Riceverai conferma e istruzioni di pagamento via email o WhatsApp.</p>
+<form id="checkoutForm">
+<div class="grid2">
+<div><label>Nome e cognome *</label><input name="name" required placeholder="Maria Rossi"></div>
+<div><label>Email *</label><input name="email" type="email" required></div>
+</div>
+<div class="grid2">
+<div><label>Telefono / WhatsApp *</label><input name="phone" required></div>
+<div><label>Città *</label><input name="city" required></div>
+</div>
+<label>Indirizzo *</label><input name="address" required>
+<label>Note</label><textarea name="notes" rows="2"></textarea>
+<button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px">Invia ordine</button>
+</form>
+<p id="orderDone" class="hidden" style="margin-top:20px;padding:16px;background:var(--beige-100);border-radius:12px"></p>
+</div>
+</div>
+<button type="button" class="install-btn" id="installBtn" hidden>Installa app</button>
+<script src="cart.js"></script>
+<script>
+function render(){
+  const items=AlmareCart.get();
+  const list=document.getElementById('cartList');
+  const summary=document.getElementById('cartSummary');
+  const checkout=document.getElementById('checkoutBox');
+  if(!items.length){
+    list.innerHTML='<div class="cart-empty"><p>Il carrello è vuoto.</p><p style="margin-top:16px"><a href="products.html" class="btn btn-primary">Continua lo shopping</a></p></div>';
+    summary.hidden=true;checkout.hidden=true;return;
+  }
+  list.innerHTML=items.map((it,i)=>`<div class="cart-item"><img src="${it.image||''}" alt=""><div><h3>${it.name}</h3><p class="meta">${[it.size,it.color].filter(Boolean).join(' · ')||'—'}</p><div class="qty-row"><button type="button" data-dec="${i}">−</button><span>${it.qty||1}</span><button type="button" data-inc="${i}">+</button></div><button type="button" class="remove" data-rm="${i}">Rimuovi</button></div><div class="price">€ ${(Number(it.price)*(it.qty||1)).toFixed(0)}</div></div>`).join('');
+  summary.hidden=false;checkout.hidden=false;
+  const tot=AlmareCart.total();
+  document.getElementById('subtotal').textContent='€ '+tot.toFixed(0);
+  document.getElementById('total').textContent='€ '+tot.toFixed(0);
+  list.querySelectorAll('[data-inc]').forEach(btn=>btn.onclick=()=>{const i=+btn.dataset.inc;AlmareCart.setQty(i,(items[i].qty||1)+1);render();});
+  list.querySelectorAll('[data-dec]').forEach(btn=>btn.onclick=()=>{const i=+btn.dataset.dec;const q=(items[i].qty||1)-1;if(q<1)AlmareCart.remove(i);else AlmareCart.setQty(i,q);render();});
+  list.querySelectorAll('[data-rm]').forEach(btn=>btn.onclick=()=>{AlmareCart.remove(+btn.dataset.rm);render();});
+}
+document.getElementById('checkoutForm').onsubmit=(e)=>{
+  e.preventDefault();
+  const fd=new FormData(e.target);
+  const items=AlmareCart.get();
+  const lines=items.map(i=>`- ${i.name} (${[i.size,i.color].filter(Boolean).join('/')||'—'}) x${i.qty} = €${(i.price*i.qty).toFixed(0)}`).join('\n');
+  const body=`Nuovo ordine Almarè Boutique\n\nCliente: ${fd.get('name')}\nEmail: ${fd.get('email')}\nTel: ${fd.get('phone')}\nCittà: ${fd.get('city')}\nIndirizzo: ${fd.get('address')}\nNote: ${fd.get('notes')||'—'}\n\nOrdine:\n${lines}\n\nTotale: € ${AlmareCart.total().toFixed(0)}`;
+  const mail='mailto:ordini@almareboutique.it?subject='+encodeURIComponent('Ordine Almarè')+'&body='+encodeURIComponent(body);
+  const wa='https://wa.me/?text='+encodeURIComponent(body);
+  document.getElementById('orderDone').classList.remove('hidden');
+  document.getElementById('orderDone').innerHTML=`Ordine preparato. <a href="${mail}">Apri email</a> oppure <a href="${wa}" target="_blank" rel="noopener">invia su WhatsApp</a>. Grazie!`;
+  AlmareCart.clear();e.target.reset();setTimeout(render,400);
+};
+render();window.addEventListener('almare:cart',render);
+let deferredPrompt;const installBtn=document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;installBtn.hidden=false;});
+installBtn?.addEventListener('click',async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;installBtn.hidden=true;});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});
+</script>
+</body>
+</html>
