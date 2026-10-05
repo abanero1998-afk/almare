@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Almaré</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf8f5;--card:#fff;--border:#e8dfd0;--text:#2c2416;--muted:#5c5346;--accent:#9a7349;--danger:#b54a3a;--ok:#3d7a4a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Outfit,system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px}
+.login-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px;width:100%;max-width:380px;box-shadow:0 8px 32px rgba(0,0,0,.06)}
+.login-box h1{font-size:1.4rem;margin-bottom:8px}
+.login-box p{color:var(--muted);font-size:.9rem;margin-bottom:24px}
+input,select,textarea{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:10px;font-family:inherit;font-size:.95rem;margin-bottom:12px;background:#fff}
+button,.btn{display:inline-flex;align-items:center;gap:6px;padding:11px 20px;border:none;border-radius:10px;font-family:inherit;font-size:.9rem;font-weight:500;cursor:pointer;background:var(--accent);color:#fff}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-danger{background:var(--danger)}
+.btn-sm{padding:7px 12px;font-size:.8rem}
+.hidden{display:none!important}
+.admin-shell{display:none}.admin-shell.visible{display:block}
+.topbar{background:#fff;border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.topbar h1{font-size:1.15rem}
+.topbar-actions{display:flex;gap:10px;align-items:center}
+.layout{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+.tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.tab{padding:10px 18px;border-radius:50px;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:.88rem;font-weight:500}
+.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.panel{display:none}.panel.active{display:block}
+.card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px}
+.card-row{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.card-row img{width:72px;height:90px;object-fit:cover;border-radius:8px;background:#eee}
+.card-info{flex:1;min-width:180px}
+.card-info h3{font-size:1rem;margin-bottom:4px}
+.card-info p{font-size:.85rem;color:var(--muted)}
+.card-actions{display:flex;gap:8px;flex-wrap:wrap}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-grid .full{grid-column:1/-1}
+label{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px}
+.toast{position:fixed;bottom:24px;right:24px;background:var(--ok);color:#fff;padding:12px 20px;border-radius:10px;font-size:.9rem;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+.hint{font-size:.8rem;color:var(--muted);margin-top:8px}
+@media(max-width:600px){.form-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="login-wrap" id="loginWrap">
+  <div class="login-box">
+    <h1>Almaré Admin</h1>
+    <p>Accesso riservato. Inserisci la password.</p>
+    <input type="password" id="pwd" placeholder="Password" autocomplete="current-password">
+    <button id="loginBtn" style="width:100%">Entra</button>
+    <p class="hint" id="loginErr" style="color:var(--danger);display:none">Password non corretta</p>
+  </div>
+</div>
+
+<div class="admin-shell" id="adminShell">
+  <div class="topbar">
+    <h1>Almaré — Pannello</h1>
+    <div class="topbar-actions">
+      <a href="index.html" class="btn btn-ghost btn-sm" target="_blank">Vedi sito</a>
+      <button class="btn-ghost btn-sm" id="logoutBtn">Esci</button>
+    </div>
+  </div>
+  <div class="layout">
+    <div class="tabs">
+      <button class="tab active" data-tab="products">Prodotti</button>
+      <button class="tab" data-tab="collections">Collezioni</button>
+      <button class="tab" data-tab="add-product">+ Nuovo prodotto</button>
+      <button class="tab" data-tab="add-collection">+ Nuova collezione</button>
+    </div>
+    <div class="panel active" id="panel-products"><div id="productsList"></div></div>
+    <div class="panel" id="panel-collections"><div id="collectionsList"></div></div>
+    <div class="panel" id="panel-add-product">
+      <div class="card">
+        <h2 style="margin-bottom:16px;font-size:1.1rem" id="prodFormTitle">Nuovo prodotto</h2>
+        <input type="hidden" id="prodId">
+        <div class="form-grid">
+          <div class="full"><label>Nome</label><input id="prodName" placeholder="Es. Abito Fluido Beige"></div>
+          <div><label>Prezzo (€)</label><input id="prodPrice" type="number" min="0" step="1"></div>
+          <div><label>Categoria</label>
+            <select id="prodCat">
+              <option value="abiti">Abiti</option><option value="completi">Completi</option><option value="tshirt">T-Shirt</option>
+              <option value="pantaloni">Pantaloni</option><option value="gonne">Gonne</option><option value="coordinati">Coordinati</option>
+              <option value="sopra-abiti">Sopra Abiti</option><option value="bambino">Bambino</option>
+            </select>
+          </div>
+          <div><label>Collezione</label><select id="prodCollection"></select></div>
+          <div><label>Età (Bambino)</label>
+            <select id="prodAge">
+              <option value="">— Donna —</option>
+              <option value="neonato">Neonato 0-12 mesi</option>
+              <option value="2anni">2 anni</option>
+              <option value="14anni">14 anni</option>
+            </select>
+          </div>
+          <div><label>Modello</label><input id="prodModel" placeholder="Es. Fluido"></div>
+          <div class="full"><label>URL Foto</label><input id="prodImage" placeholder="https://..."></div>
+          <div class="full"><label>Taglie (virgola)</label><input id="prodSizes" placeholder="XS, S, M, L"></div>
+          <div class="full"><label>Colori (virgola)</label><input id="prodColors" placeholder="Beige, Crema"></div>
+        </div>
+        <div style="margin-top:16px;display:flex;gap:10px">
+          <button id="saveProdBtn">Salva prodotto</button>
+          <button class="btn-ghost" id="cancelProdBtn">Annulla</button>
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="panel-add-collection">
+      <div class="card">
+        <h2 style="margin-bottom:16px;font-size:1.1rem" id="collFormTitle">Nuova collezione</h2>
+        <input type="hidden" id="collId">
+        <div class="form-grid">
+          <div class="full"><label>Nome</label><input id="collName"></div>
+          <div class="full"><label>Descrizione</label><input id="collDesc"></div>
+          <div class="full"><label>URL Foto</label><input id="collImage" placeholder="https://..."></div>
+        </div>
+        <div style="margin-top:16px;display:flex;gap:10px">
+          <button id="saveCollBtn">Salva collezione</button>
+          <button class="btn-ghost" id="cancelCollBtn">Annulla</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast">Salvato</div>
+<script src="data.js"></script>
+<script>
+const ADMIN_PASSWORD='almare2026';
+const SESSION_KEY='almare_admin_ok';
+const loginWrap=document.getElementById('loginWrap');
+const adminShell=document.getElementById('adminShell');
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Salvato';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+function checkAuth(){if(sessionStorage.getItem(SESSION_KEY)==='1'){loginWrap.classList.add('hidden');adminShell.classList.add('visible');initAdmin()}}
+document.getElementById('loginBtn').onclick=()=>{if(document.getElementById('pwd').value===ADMIN_PASSWORD){sessionStorage.setItem(SESSION_KEY,'1');checkAuth()}else{document.getElementById('loginErr').style.display='block'}};
+document.getElementById('pwd').onkeydown=e=>{if(e.key==='Enter')document.getElementById('loginBtn').click()};
+document.getElementById('logoutBtn').onclick=()=>{sessionStorage.removeItem(SESSION_KEY);location.reload()};
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.onclick=()=>{
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-'+tab.dataset.tab).classList.add('active');
+    if(tab.dataset.tab==='add-product')resetProdForm();
+    if(tab.dataset.tab==='add-collection')resetCollForm();
+  };
+});
+let catalog;
+function initAdmin(){catalog=getCatalog();renderProducts();renderCollections();fillCollectionSelect()}
+function fillCollectionSelect(){document.getElementById('prodCollection').innerHTML=catalog.collections.map(c=>`<option value="${c.id}">${c.name}</option>`).join('')}
+function renderProducts(){
+  const el=document.getElementById('productsList');
+  if(!catalog.products.length){el.innerHTML='<p style="color:var(--muted)">Nessun prodotto.</p>';return}
+  el.innerHTML=catalog.products.map(p=>`<div class="card"><div class="card-row"><img src="${p.image||''}" alt=""><div class="card-info"><h3>${p.name}</h3><p>€ ${p.price} · ${p.category}${p.age?' · '+p.age:''} · ${p.model||''}</p><p>${(p.sizes||[]).join(', ')} · ${(p.colors||[]).join(', ')}</p></div><div class="card-actions"><button class="btn-sm btn-ghost" onclick="editProduct('${p.id}')">Modifica</button><button class="btn-sm btn-danger" onclick="deleteProduct('${p.id}')">Elimina</button></div></div></div>`).join('');
+}
+function renderCollections(){
+  const el=document.getElementById('collectionsList');
+  if(!catalog.collections.length){el.innerHTML='<p style="color:var(--muted)">Nessuna collezione.</p>';return}
+  el.innerHTML=catalog.collections.map(c=>`<div class="card"><div class="card-row"><img src="${c.image||''}" alt=""><div class="card-info"><h3>${c.name}</h3><p>${c.desc||''}</p></div><div class="card-actions"><button class="btn-sm btn-ghost" onclick="editCollection('${c.id}')">Modifica</button><button class="btn-sm btn-danger" onclick="deleteCollection('${c.id}')">Elimina</button></div></div></div>`).join('');
+}
+window.editProduct=function(id){
+  const p=catalog.products.find(x=>x.id===id);if(!p)return;
+  prodId.value=p.id;prodName.value=p.name;prodPrice.value=p.price;prodCat.value=p.category||'abiti';
+  prodCollection.value=p.collection||'';prodAge.value=p.age||'';prodModel.value=p.model||'';
+  prodImage.value=p.image||'';prodSizes.value=(p.sizes||[]).join(', ');prodColors.value=(p.colors||[]).join(', ');
+  prodFormTitle.textContent='Modifica prodotto';
+  document.querySelector('[data-tab="add-product"]').click();
+};
+window.deleteProduct=function(id){if(!confirm('Eliminare?'))return;catalog.products=catalog.products.filter(p=>p.id!==id);saveCatalog(catalog);renderProducts();showToast('Eliminato')};
+window.editCollection=function(id){
+  const c=catalog.collections.find(x=>x.id===id);if(!c)return;
+  collId.value=c.id;collName.value=c.name;collDesc.value=c.desc||'';collImage.value=c.image||'';
+  collFormTitle.textContent='Modifica collezione';document.querySelector('[data-tab="add-collection"]').click();
+};
+window.deleteCollection=function(id){if(!confirm('Eliminare?'))return;catalog.collections=catalog.collections.filter(c=>c.id!==id);saveCatalog(catalog);renderCollections();fillCollectionSelect();showToast('Eliminata')};
+function resetProdForm(){prodId.value='';prodName.value='';prodPrice.value='';prodCat.value='abiti';prodAge.value='';prodModel.value='';prodImage.value='';prodSizes.value='';prodColors.value='';prodFormTitle.textContent='Nuovo prodotto';fillCollectionSelect()}
+function resetCollForm(){collId.value='';collName.value='';collDesc.value='';collImage.value='';collFormTitle.textContent='Nuova collezione'}
+document.getElementById('saveProdBtn').onclick=()=>{
+  const id=prodId.value||('p'+Date.now());const name=prodName.value.trim();const price=parseFloat(prodPrice.value)||0;
+  if(!name){alert('Inserisci il nome');return}
+  const item={id,name,price,category:prodCat.value,collection:prodCollection.value,age:prodAge.value||null,model:prodModel.value.trim(),image:prodImage.value.trim()||'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80',sizes:prodSizes.value.split(',').map(s=>s.trim()).filter(Boolean),colors:prodColors.value.split(',').map(s=>s.trim()).filter(Boolean)};
+  const idx=catalog.products.findIndex(p=>p.id===id);if(idx>=0)catalog.products[idx]=item;else catalog.products.push(item);
+  saveCatalog(catalog);renderProducts();showToast('Prodotto salvato');document.querySelector('[data-tab="products"]').click();
+};
+document.getElementById('cancelProdBtn').onclick=()=>document.querySelector('[data-tab="products"]').click();
+document.getElementById('saveCollBtn').onclick=()=>{
+  const id=collId.value||('c'+Date.now());const name=collName.value.trim();if(!name){alert('Inserisci il nome');return}
+  const item={id,name,desc:collDesc.value.trim(),image:collImage.value.trim()||'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80'};
+  const idx=catalog.collections.findIndex(c=>c.id===id);if(idx>=0)catalog.collections[idx]=item;else catalog.collections.push(item);
+  saveCatalog(catalog);renderCollections();fillCollectionSelect();showToast('Collezione salvata');document.querySelector('[data-tab="collections"]').click();
+};
+document.getElementById('cancelCollBtn').onclick=()=>document.querySelector('[data-tab="collections"]').click();
+checkAuth();
+</script>
+</body>
+</html>
