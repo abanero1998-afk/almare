@@ -1,4 +1,4 @@
-/* Home — Almarè theme, structure inspired by boutique layout */
+/* Home — Almarè theme */
 .trust-strip{background:var(--beige-100);border-bottom:1px solid var(--glass-border);padding:14px 20px}
 .trust-strip-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 28px;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-soft);font-weight:500}
 .trust-ico{margin-right:6px}
@@ -38,13 +38,11 @@
 .look-eyebrow{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;opacity:.85;margin-bottom:6px}
 .look-overlay h3{font-family:var(--font-display);font-size:1.7rem;font-weight:400;margin-bottom:10px}
 .look-cta{font-size:.85rem;font-weight:500;letter-spacing:.04em;opacity:.9}
-.gift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto 40px}
-.gift-card{text-align:center;padding:36px 24px;border-radius:var(--radius);position:relative;transition:transform var(--transition)}
-.gift-card:hover{transform:translateY(-4px)}
-.gift-card.featured{border-color:var(--beige-400);box-shadow:var(--shadow-lg)}
-.gift-badge{position:absolute;top:14px;right:14px;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;background:var(--beige-600);color:#fff;padding:4px 10px;border-radius:50px}
-.gift-amount{font-family:var(--font-display);font-size:2.8rem;font-weight:400;color:var(--beige-700);margin-bottom:8px}
-.gift-card p{color:var(--text-soft);margin-bottom:20px;font-size:.9rem}
+.gift-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:8px auto 16px;max-width:420px}
+.gift-pill{min-width:88px;padding:12px 22px;border-radius:50px;border:1px solid var(--glass-border);background:var(--glass-strong);font-family:var(--font-body);font-size:1rem;font-weight:600;color:var(--beige-700);cursor:pointer;transition:all .2s}
+.gift-pill:hover,.gift-pill.featured{background:var(--beige-600);color:#fff;border-color:var(--beige-600)}
+.gift-pill.featured{box-shadow:0 4px 16px rgba(154,115,73,.25)}
+.gift-hint{text-align:center;font-size:.85rem;color:var(--text-soft);margin-bottom:28px}
 .pay-methods{text-align:center;margin-top:8px}
 .pay-methods>p{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--beige-500);margin-bottom:14px}
 .pay-logos{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
@@ -55,5 +53,5 @@
 .trust-card h3{font-family:var(--font-display);font-size:1.2rem;font-weight:500;margin-bottom:8px}
 .trust-card p{font-size:.88rem;color:var(--text-soft);line-height:1.5}
 .trust-card a{color:var(--beige-700);font-weight:500}
-@media(max-width:1000px){.novita-grid{grid-template-columns:repeat(2,1fr)}.look-grid{grid-template-columns:1fr}.look-card{aspect-ratio:16/10}.gift-grid{grid-template-columns:1fr;max-width:360px}.trust-cards-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1000px){.novita-grid{grid-template-columns:repeat(2,1fr)}.look-grid{grid-template-columns:1fr}.look-card{aspect-ratio:16/10}.trust-cards-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.novita-grid{grid-template-columns:1fr 1fr;gap:12px}.trust-cards-grid{grid-template-columns:1fr}.wa-help-inner{padding:24px;flex-direction:column;text-align:center}.wa-help-text p{margin:0 auto}.rev-item{font-size:1rem}}
